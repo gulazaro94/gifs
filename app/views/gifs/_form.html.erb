@@ -1,0 +1,19 @@
+<%= form_for @gif do |f| %>
+
+  <div class="errors">
+    <% f.object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <br>
+    <%= f.submit %>
+  </div>
+
+<% end %>
