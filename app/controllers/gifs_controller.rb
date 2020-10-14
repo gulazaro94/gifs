@@ -18,6 +18,6 @@ class GifsController < ApplicationController
   def gif_params
     return {} unless params[:gif]
 
-    params.require(:gif).permit(:image)
+    params.require(:gif).permit(:image, gif_labels_attributes: %i[id label _destroy])
   end
 end

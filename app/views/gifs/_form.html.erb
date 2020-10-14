@@ -12,6 +12,14 @@
   </div>
 
   <div>
+    <% f.fields_for(:gif_labels) do |gif_label_form| %>
+      <%= render('gif_label_fields', f: gif_label_form)%>
+    <% end %>
+
+    <%= link_to_add_association 'Add label', f, :gif_labels %>
+  </div>
+
+  <div>
     <br>
     <%= f.submit %>
   </div>
