@@ -1,0 +1,19 @@
+<h1>Your labels</h1>
+<%= link_to 'New', new_label_path %>
+
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Created at</th>
+  </tr>
+
+  <% @labels.each do |label| %>
+    <tr>
+      <td><%= label.id %></td>
+      <td><%= label.name %></td>
+      <td><%= l(label.created_at, format: :short) %></td>
+    </tr>
+  <% end %>
+</table>

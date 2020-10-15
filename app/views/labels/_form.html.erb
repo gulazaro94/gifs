@@ -1,0 +1,15 @@
+<%= form_for @label do |f| %>
+
+  <%= render('shared/form_errors', f: f) %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <br>
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -17,7 +17,7 @@ RSpec.describe(GifsController, type: :controller) do
       it('creates the gif with the attached image') do
         expect { do_action }.to change(Gif, :count).by(1)
 
-        expect(response).to redirect_to(new_gif_path)
+        expect(response).to redirect_to(gifs_path)
         gif = Gif.last
         expect(gif.image).to be_attached
       end

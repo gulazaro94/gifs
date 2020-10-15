@@ -4,6 +4,7 @@ class Gif < ApplicationRecord
   has_one_attached :image
 
   has_many(:gif_labels, dependent: :destroy)
+  has_many(:labels, through: :gif_labels)
   accepts_nested_attributes_for(:gif_labels, reject_if: :all_blank, allow_destroy: true)
 
   validates(:image, presence: true)

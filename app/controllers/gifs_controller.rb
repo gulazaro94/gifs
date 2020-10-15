@@ -1,13 +1,18 @@
 class GifsController < ApplicationController
+  def index
+    @gifs = Gif.includes(:labels).order(id: :desc).all
+  end
+
   def new
     @gif = Gif.new
+    @label_options = Label.order(:name).pluck(:name, :id)
   end
 
   def create
     @gif = Gif.new(gif_params)
 
     if @gif.save
-      redirect_to new_gif_path, notice: 'GIF uploaded successfully'
+      redirect_to gifs_path, notice: 'GIF uploaded successfully'
     else
       render :new
     end
@@ -18,6 +23,6 @@ class GifsController < ApplicationController
   def gif_params
     return {} unless params[:gif]
 
-    params.require(:gif).permit(:image, gif_labels_attributes: %i[id label _destroy])
+    params.require(:gif).permit(:image, label_ids: [])
   end
 end

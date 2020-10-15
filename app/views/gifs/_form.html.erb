@@ -1,10 +1,6 @@
 <%= form_for @gif do |f| %>
 
-  <div class="errors">
-    <% f.object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </div>
+  <%= render('shared/form_errors', f: f) %>
 
   <div>
     <%= f.label :image %>
@@ -12,11 +8,8 @@
   </div>
 
   <div>
-    <% f.fields_for(:gif_labels) do |gif_label_form| %>
-      <%= render('gif_label_fields', f: gif_label_form)%>
-    <% end %>
-
-    <%= link_to_add_association 'Add label', f, :gif_labels %>
+    <label for="label_ids">Labels</label>
+    <%= f.select :label_ids, @label_options, {}, { multiple: true } %>
   </div>
 
   <div>

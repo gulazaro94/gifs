@@ -1,0 +1,21 @@
+<h1>Your GIFs</h1>
+
+<%= link_to 'New', new_gif_path %>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Image</th>
+    <th>Labels</th>
+    <th>Created at</th>
+  </tr>
+
+  <% @gifs.each do |gif| %>
+    <tr>
+      <td><%= gif.id %></td>
+      <td><%= image_tag(url_for(gif.image)) %></td>
+      <td><%= gif.labels.map(&:name).join(', ') %></td>
+      <td><%= l(gif.created_at, format: :short) %></td>
+    </tr>
+  <% end %>
+</table>
